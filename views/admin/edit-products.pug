@@ -1,0 +1,21 @@
+extends ../layouts/nav-layout.pug
+
+block content
+   .form__wrapper
+      form.form(action='/admin/edit-product' method='POST')
+         h4.form__title Edit Product
+
+         label(for="product") Product Name:
+         input.form__text(type='text' name='title' value=product.title)#product
+
+         label(for="price") Price:
+         input.form__text(type='number' name='price' step='0.01' value=product.price)#price
+
+         label(for="image-url") Image URL:
+         input.form__text(type='text' name='imageURL' value=product.image_url)#image-url
+
+         label(for="description") Product Description:
+         textarea(name="description", cols="30", rows="10").form__text#description #{product.description}
+         input(type="hidden" name='productID' value=product.product_uid)
+
+         input.form__button(type='submit' value='Update')

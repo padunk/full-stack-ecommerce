@@ -1,0 +1,21 @@
+extends ../layouts/nav-layout.pug
+
+block content
+   .form__wrapper
+      form.form(action='/admin/product' method='POST')
+         h4.form__title Add Products
+
+         label(for="product") Product Name:
+         input.form__text(type='text' name='title')#product
+
+         label(for="price") Price:
+         input.form__text(type='number' name='price' step='0.01')#price
+
+         label(for="image-url") Image URL:
+         input.form__text(type='text' name='imageURL')#image-url
+
+         label(for="description") Product Desription:
+         textarea(name="description", cols="30", rows="10").form__text#description
+
+         input.form__button(type='submit' value='Submit')
+      

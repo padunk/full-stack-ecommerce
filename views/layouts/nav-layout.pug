@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+html(lang="en")
+   head
+      meta(charset="UTF-8")
+      meta(name="viewport", content="width=device-width, initial-scale=1.0")
+      meta(http-equiv="X-UA-Compatible", content="ie=edge")
+      title #{docTitle}
+      link(rel="stylesheet", href="/css/style.css")
+      block styles
+   body
+      nav.nav
+         ul.nav__list
+            li.nav__item
+               a.nav__link(href="/" class=(path === '/' ? 'nav__active' : '')) Shop
+            li.nav__item
+               a.nav__link(href="/products" class=(path === '/products' ? 'nav__active' : '')) Products
+            li.nav__item
+               a.nav__link(href="/cart" class=(path === '/cart' ? 'nav__active' : '')) Cart
+            li.nav__item
+               a.nav__link(href="/orders" class=(path === '/orders' ? 'nav__active' : '')) Orders
+            li.nav__item
+               a.nav__link(href="/admin/add-product" class=(path === '/admin/add-product' ? 'nav__active' : '')) Add Products
+            li.nav__item
+               a.nav__link(href="/admin/view-product" class=(path === '/admin/view-product' ? 'nav__active' : '')) View Products
+         ul.nav__list
+            li.nav__item
+               a.nav__link(href="/login" class=(path === '/login' ? 'nav__active' : '')) Login
+      block content
+         

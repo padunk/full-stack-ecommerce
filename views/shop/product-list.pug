@@ -1,0 +1,20 @@
+extends ../layouts/nav-layout.pug
+
+block content
+   main
+      h1.product__page-title List of All Products
+      .product__wrapper
+         if prods.length > 0
+            each product in prods
+               - var imgSrc = product.image_url
+               .product__card
+                  h2.product__title #{product.title}
+                  img(src=imgSrc, alt="product", loading="lazy").product__image
+                  h3.product__price #{product.price} $
+                  p.product__description #{product.description}
+                  .product__action
+                     button(type="button").btn.btn-cta
+                        a(href="/products/" + product.product_uid).details Details
+                     include ../layouts/add-to-cart.pug
+         else
+            h2 No Products

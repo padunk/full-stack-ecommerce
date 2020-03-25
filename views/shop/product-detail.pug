@@ -1,0 +1,11 @@
+extends ../layouts/nav-layout.pug
+
+block content
+   main
+      //- - var imgSrc = product.imageURL.replace(/&w=\d*/i, '&w=1500');
+      .product-details
+         h2.product-details__title #{product.title}
+         img(src=product.image_url, loading="lazy", alt="product").product-details__image
+         h3.product-details__price Price: #{product.price} $
+         pre.product-details__description #{product.description}
+         include ../layouts/add-to-cart.pug 

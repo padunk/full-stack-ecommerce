@@ -1,0 +1,44 @@
+extends ../layouts/nav-layout.pug
+
+block content
+   h1.cart-title Your Cart
+   main.cart
+      if products.length > 0
+         ol.cart__ordered-list
+            li.cart__list
+               .cart__list--wrapper.cart__list--wrapper-product
+                  h3.list-title Product
+               .cart__list--wrapper
+                  h3.list-title Price
+               .cart__list--wrapper
+                  h3.list-title Quantity
+               .cart__list--wrapper
+                  h3.list-title Total Price
+            each product in products
+               - var subPrice = (product.price * product.cart_item.quantity).toFixed(2);
+               li.cart__list
+                  .cart__list--wrapper.cart__list--wrapper-img
+                     img(src=product.image_url, alt=product.title).cart__list-image
+                  .cart__list--wrapper
+                     h3.cart__product-title #{product.title}
+                  .cart__list--wrapper
+                     h4.cart__product-price $ #{product.price}
+                  .cart__list--wrapper
+                     h4.cart__product-qty #{product.cart_item.quantity}
+                  .cart__list--wrapper
+                     h4.cart__product-sub-price $ #{subPrice}
+                  .cart__list--wrapper
+                     form(action="/delete-cart-item", method="post")
+                        input(type="hidden", name="productID", value=product.product_uid)
+                        button(type="submit").btn.btn-delete Delete
+            li.cart__list
+               .cart__list--wrapper.cart__list--wrapper-total-text
+                  h3.cart__total-price Grand Total:
+               .cart__list--wrapper.cart__list--wrapper-total-price
+                  h3.cart__total-price $ change this later
+         .align-right.martop-large
+            form(action="/create-order" method="POST")
+               button(type="submit").btn.btn-cta Order Now!
+                     
+      else
+         h3.cart-title Your Cart is Empty

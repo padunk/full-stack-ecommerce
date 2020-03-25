@@ -1,0 +1,22 @@
+extends ../layouts/nav-layout.pug 
+
+block content
+   main
+      h2 Please confirm your order.
+      if orders.length > 0
+         ol
+            each order in orders
+               li
+                  ul
+                  each product in order.products
+                     li
+                        img(src=product.image_url alt=product.title)
+                        h2 #{product.title}
+                        p #{product.order_item.quantity}
+                        p #{product.price}
+                        p Total #{product.order_item.quantity * product.price}
+               
+      else
+         h2 You don't have any order yet.
+         p Go
+            a(href="/") Shopping

@@ -1,0 +1,17 @@
+extends ../layouts/nav-layout.pug
+
+block content
+    h1.cart-title LOGIN PAGE
+    form(action="/login" method="POST").form.marbot-xl
+        div.wrapper.martop-medium
+            div
+                label(for="email") Email:
+            div
+                input(type="email" placeholder="john@xyz.com").form__text#email
+        div.wrapper.martop-medium
+            div
+                label(for="password") Password:
+            div
+                input(type="password").form__text#password
+        div.wrapper.martop-medium
+           input(type="submit" value="Login").form__button
